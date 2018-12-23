@@ -1,0 +1,17 @@
+<div>
+    <ul>
+        <li>
+            {%if 'gplus_id' in login_session%}
+            <span><i class="fas fa-user"></i> Logged in as <strong>{{login_session['username']}}</strong></span>
+        <li>
+            <a href="{{url_for('gdisconnect')}}"><i class="fas fa-sign-out-alt"></i><input type='submit', value = 'Logout'></a>
+
+        </li>
+        {%else%}
+        <li>
+            <a href="{{url_for('showLogin')}}"><i class="fas fa-sign-in-alt"></i><input type='submit', value = 'Login'></a>
+        </li>
+        {%endif%}
+        </li>
+    </ul>
+</div>
