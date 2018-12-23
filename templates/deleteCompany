@@ -1,0 +1,20 @@
+<html>
+<head>
+	{% include "loginorlogout.html" %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body>
+<h1> Are you sure you want to delete Company {{company.name}}? </h1></br>
+
+<form action="#" method = 'post'>
+<input type='submit', value = 'Delete'>
+<a href = '{{url_for('menuCompany')}}'> Cancel </a>
+
+
+</form>
+
+
+</body>
+
+</html>
