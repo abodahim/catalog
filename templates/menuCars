@@ -1,0 +1,48 @@
+<html>
+<head>
+  {% include "loginorlogout.html" %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+<h1>{{company.name}}</h1>
+
+<a href = '{{url_for('addNewCar', company_id = company.id) }}'><h4><input type='submit' value='Add New Car'></h4></a>
+
+
+<!--MESSAGE FLASHING EXAMPLE -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<h3>Informtion Cars: </h3>
+
+{% for i in carItems %}
+
+<p><h7><strong>Name:</strong></h7>{{i.name}}</p>
+
+<p><h7><strong>Description:</strong></h7>{{i.description}}</p>
+
+<p><h7><strong>Price:</strong></h7>{{i.price}}</p>
+
+<a href='{{url_for('editInforamtionCar', company_id = company.id, menu_id = i.id) }}'><input type='submit' value='Edit'></a>
+<a href = '{{url_for('deleteInforamtionCar', company_id = company.id, menu_id = i.id ) }}'><input type='submit' value='Delete'></a>
+</br>
+</br>
+</br>
+
+{% endfor %}
+</br>
+</br>
+</br>
+<a href= '{{url_for('menuCompany', company_id=company_id)}}'><input type='submit' value='Back'></a>
+</body>
+
+</html>
