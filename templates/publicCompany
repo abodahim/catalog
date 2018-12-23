@@ -1,0 +1,35 @@
+<html>
+
+<head>
+{% include "loginorlogout.html" %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<div class = 'pane'>
+<h1>Menu Company</h1>
+
+<!--MESSAGE FLASHING EXAMPLE -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+{% for message in messages %}
+  <li><strong>{{message}}</strong></li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+{% for company in companies %}
+
+<a href = "{{url_for('menuCars', company_id = company.id)}}"><p><h1>{{company.name}}</h1></p></a>
+
+
+{% endfor %}
+
+</div>
+</body>
+
+</html>
